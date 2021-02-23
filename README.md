@@ -1,8 +1,4 @@
-![Docker images](https://github.com/invoiceninja/dockerfiles/workflows/Docker%20images/badge.svg)
-[![Docker image, latest](https://img.shields.io/docker/image-size/invoiceninja/invoiceninja/latest?label=latest)](https://hub.docker.com/r/invoiceninja/invoiceninja)
-[![Docker image, alpine](https://img.shields.io/docker/image-size/invoiceninja/invoiceninja/alpine?label=alpine)](https://hub.docker.com/r/invoiceninja/invoiceninja)
-
-# Docker for [Invoice Ninja](https://www.invoiceninja.com/) 
+# [Invoice Ninja](https://www.invoiceninja.com/) 
 
 :crown: **Features**
 
@@ -16,14 +12,14 @@
 The dockerfile has been revamped to make is easier to get started, by default the base image selected in 5 which will pull in the latest v5 stable image.
 
 ```
-git clone https://github.com/invoiceninja/dockerfiles.git
+git clone https://github.com/deck-app/invoiceninja.git
 cd dockerfiles
 ```
 
 Instead of defining our environment variables inside our docker-compose.yml file we now define this in the ```env``` file, open this file up and insert your APP_URL and your APP_KEY
 
 ```
-APP_URL=http://in.localhost:8003/
+APP_URL=http://localhost/
 APP_KEY=<insert your generated key in here>
 APP_DEBUG=true
 MULTI_DB_ENABLED=false
@@ -42,17 +38,11 @@ docker run --rm -it invoiceninja/invoiceninja php artisan key:generate --show
 
 Copy the entire string and insert in the env file at ```APP_KEY=base64....```
 
-To ensure folder permissions are correct when the container comes up for the first time it is important that you set the correct folder permissions on the ```docker``` folder.
-
-From the terminal run
-
-```sudo chown -R 1500:1500 docker/app```
-
 ### Note for people running the container locally on their PC ###
 
 If you are running the container locally, then the container will need to resolve the host, to support this you will want to insert your LAN IP address and the host name in the hosts file located in ```config/hosts```
 
-For example, lets say your APP_URL is ```http://in5.test:8000``` and your LAN IP is 192.168.0.124 the hosts file will have an entry looking like this:
+For example, lets say your APP_URL is ```http://in5.test``` and your LAN IP is 192.168.0.124 the hosts file will have an entry looking like this:
 
 
 ```192.168.0.124 in5.test```
