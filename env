@@ -1,0 +1,19 @@
+APP_URL=http://localhost
+APP_KEY=base64:BTbXyBVS/b661/LS1Dty+7z0qMusbvFCeM2+OZao3ME=
+APP_DEBUG=true
+MULTI_DB_ENABLED=false
+DB_HOST1=db
+DB_USERNAME1=ninja
+DB_PASSWORD1=ninja
+DB_DATABASE1=ninja
+
+#this is a system variable please do not remove
+IS_DOCKER=true
+
+#V4 env vars
+DB_STRICT=false
+DB_HOST=db
+DB_DATABASE=ninja
+DB_USERNAME=ninja
+DB_PASSWORD=ninja
+APP_CIPHER=AES-256-CBC
