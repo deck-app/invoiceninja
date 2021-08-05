@@ -19,47 +19,47 @@ services:
     # Run webserver nginx on port 80
     # Feel free to modify depending what port is already occupied
     ports: 
-      - "${NINJA_PORT}:80"
-      #- "443:443"
+      - '${NINJA_PORT}:80'
+      #- '443:443'
     networks:
       - invoiceninja
     #command: chown -R 1500:1500 docker/app
     extra_hosts:
-      - "in5.localhost:192.168.0.124 " #host and ip
+      - 'in5.localhost:192.168.0.124 ' #host and ip
 
   app:
     image: invoiceninja/invoiceninja:5
     env_file: env
     restart: always
     volumes:
-      - ./config/hosts:/etc/hosts:ro
-      - ./config/shutdown.sh:/usr/local/bin/shutdown.sh
-      - ./docker/app/public:/var/www/app/public:rw,delegated
-      - ./docker/app/storage:/var/www/app/storage:rw,delegated
+      - './config/hosts:/etc/hosts:ro'
+      - './config/shutdown.sh:/usr/local/bin/shutdown.sh'
+      - './docker/app/public:/var/www/app/public:rw,delegated'
+      - './docker/app/storage:/var/www/app/storage:rw,delegated'
     depends_on:
       - db
     networks: 
       - invoiceninja  
    # command: chown -R 1500:1500 docker/app
     extra_hosts:
-      - "in5.localhost:192.168.0.124 " #host and ip
+      - 'in5.localhost:192.168.0.124 ' #host and ip
 
   db:
     image: mysql:5
     ports:
-      - "3305:3306"
+      - '3305:3306'
     restart: always
     environment: 
-      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
-      - MYSQL_USER=${DB_USER}
-      - MYSQL_PASSWORD=${DB_PASSWORD}
-      - MYSQL_DATABASE=${DB_NAME}
+      - 'MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}'
+      - 'MYSQL_USER=${DB_USER}'
+      - 'MYSQL_PASSWORD=${DB_PASSWORD}'
+      - 'MYSQL_DATABASE=${DB_NAME}'
     volumes:
-      - ./docker/mysql/data:/var/lib/mysql:rw,delegated
+      - './docker/mysql/data:/var/lib/mysql:rw,delegated'
     networks:
       - invoiceninja
     extra_hosts:
-      - "in5.localhost:192.168.0.124 " #host and ip
+      - 'in5.localhost:192.168.0.124 ' #host and ip
 
   # THIS IS ONLY A VALID CONFIGURATION FOR IN 4. DO NOT USE FOR IN 5.
   # cron:
@@ -70,7 +70,7 @@ services:
       # - ./docker/app/public/logo:/var/www/app/public/logo:rw,delegated
   #   entrypoint: |
   #     /bin/sh -c 'sh -s <<EOF
-  #     trap "break;exit" SIGHUP SIGINT SIGTERM
+  #     trap 'break;exit' SIGHUP SIGINT SIGTERM
   #     sleep 300s
   #     while /bin/true; do
   #       ./artisan ninja:send-invoices
